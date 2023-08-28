@@ -12,9 +12,9 @@ lazy val root = (project in file(".")).
     description := "sbt assembly plugin merge strategy for log4j2 plugins",
     licenses := Seq("MIT License" -> url("https://github.com/idio/sbt-assembly-log4j2/blob/master/LICENSE")),
     scalacOptions := Seq("-deprecation", "-unchecked"),
-    addSbtPlugin("com.eed3si9n" % "sbt-assembly" % "2.0.0-RC1"),
+    addSbtPlugin("com.eed3si9n" % "sbt-assembly" % "2.1.1"),
     libraryDependencies ++= Seq(
-      "org.apache.logging.log4j" % "log4j-core" % "2.17.2"
+      "org.apache.logging.log4j" % "log4j-core" % "2.20.0"
     ),
     crossSbtVersions := Seq("0.13.16", "1.2.8"),
     crossScalaVersions := Seq("2.11.8", "2.12.10"),   
