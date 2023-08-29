@@ -14,4 +14,10 @@ lazy val root = (project in file(".")).
     Test    / packageBin / publishArtifact := false,
     Compile / packageDoc / publishArtifact := false,
     Compile / packageSrc / publishArtifact := true,
+    developers := List(
+      Developer("mpollmeier", "Michael Pollmeier", "michael@michaelpollmeier.com", url("http://www.michaelpollmeier.com/"))),
+    scmInfo := Some(ScmInfo(url("https://github.com/mpollmeier/sbt-assembly-log4j2"),
+                                "scm:git@github.com:mpollmeier/sbt-assembly-log4j2.git")),
+    homepage := Some(url("https://github.com/mpollmeier/sbt-assembly-log4j2/")),
+    publishTo := sonatypePublishToBundle.value,
   )
