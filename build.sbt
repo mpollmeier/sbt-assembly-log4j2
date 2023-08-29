@@ -10,10 +10,6 @@ lazy val root = (project in file(".")).
     libraryDependencies += "org.apache.logging.log4j" % "log4j-core" % "2.20.0",
     crossSbtVersions := Seq("1.9.4"),
     crossScalaVersions := Seq("2.12.18"),   
-    Compile / packageBin / publishArtifact := true,
-    Test    / packageBin / publishArtifact := false,
-    Compile / packageDoc / publishArtifact := false,
-    Compile / packageSrc / publishArtifact := true,
     developers := List(
       Developer("mpollmeier", "Michael Pollmeier", "michael@michaelpollmeier.com", url("http://www.michaelpollmeier.com/"))),
     scmInfo := Some(ScmInfo(url("https://github.com/mpollmeier/sbt-assembly-log4j2"),
