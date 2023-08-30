@@ -9,32 +9,29 @@ serialisable cache from multiple different ones.
 
 **This plugin** provides a simple function to merge those files in a safe way.
 
-## Setup
-
-For sbt 0.13.6+ add `sbt-assembly-log4j2` as a dependency in
-`project/assembly.sbt` alongside [`sbt-assembly`][sbt-assembly]:
-
-```scala
-resolvers += Resolver.url(
-  "idio",
-  url("http://dl.bintray.com/idio/sbt-plugins")
-)(Resolver.ivyStylePatterns)
-
-addSbtPlugin("com.eed3si9n" % "sbt-assembly" % "<version>")
-addSbtPlugin("org.idio" % "sbt-assembly-log4j2" % "0.1.0")
-```
-
-[sbt-assembly]: https://github.com/sbt/sbt-assembly#setup
-
 ## Usage
 
-In your merge strategy, add the following case:
+For sbt 1.3+ add `sbt-assembly-log4j2` as a dependency in
+`project/assembly.sbt` alongside [`sbt-assembly`][sbt-assembly]:
 
+
+`project/plugins.sbt`:
 ```scala
-import sbtassembly.Log4j2MergeStrategy
-
-assemblyMergeStrategy in assembly := {
-    //...
-    case PathList(ps @ _*) if ps.last == "Log4j2Plugins.dat" => Log4j2MergeStrategy.plugincache
-    //...
+addSbtPlugin("com.eed3si9n" % "sbt-assembly" % "2.1.1")
+addSbtPlugin("com.michaelpollmeier" % "sbt-assembly-log4j2" % "1.1.3")
 ```
+
+`build.sbt`
+```scala
+assembly/assemblyMergeStrategy := {
+  case "META-INF/org/apache/logging/log4j/core/config/plugins/Log4j2Plugins.dat" =>
+    sbtassembly.Log4j2MergeStrategy.plugincache
+}
+```
+
+Latest version of [sbt-assembly](https://github.com/sbt/sbt-assembly#setup)
+Requires sbt 1.3+
+
+## Credits
+* [Stathis Charitos](https://github.com/stathischaritos) for the idea and [creating the first version](https://github.com/idio/sbt-assembly-log4j2). Unfortunately it's unmaintained and only available for a outdated sbt and sbt-assembly versions.
+* [Ben Reyes](https://github.com/fnqista) for providing an [upgrade PR](https://github.com/idio/sbt-assembly-log4j2/pull/15) that got incorporated here. 
